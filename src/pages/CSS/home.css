@@ -1,0 +1,442 @@
+/* Configurações Globais */
+:root {
+    --primary-color: #D147BD; /* Roxo principal */
+    --bg-color: #f8edf8;      /* Fundo levemente rosado/branco */
+    --text-dark: #333;
+    --text-light: #777;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+    padding: 20px 5%;
+    
+    padding-top: 90px; /* ajusta conforme a altura do header */
+}
+
+
+
+/* --- Cabeçalho --- */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 10px 20px;
+    margin-bottom: 40px;
+
+    background-color: #fff; /* IMPORTANTE */
+    z-index: 1000;          /* fica acima do conteúdo */
+}
+
+
+.logo {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+nav span {
+    font-size: 0.9rem;
+}
+
+nav span strong {
+    color: var(--primary-color);
+}
+
+.icons {
+    display: flex;
+    gap: 15px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* --- Hero Section (Títulos) --- */
+.hero {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.hero p {
+    color: #b5832d; /* Tom dourado do emoji */
+    font-weight: 500;
+}
+
+/* --- Filtros (Botões) --- */
+.filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.filters button {
+    padding: 8px 20px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    background: var(--white);
+    color: var(--text-light);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.filters button.active {
+    background: var(--primary-color);
+    color: var(--white);
+    border-color: var(--primary-color);
+}
+
+.filters button:hover:not(.active) {
+    background: #f0f0f0;
+}
+
+/* --- Grid de Produtos --- */
+.produtos {
+    display: grid;
+    /* Alterado para no máximo 3 colunas, garantindo que fiquem largas */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px; /* Aumentamos o espaço entre eles para um visual mais limpo */
+    padding: 20px 0;
+}
+
+/* Responsividade para Celular */
+@media (max-width: 768px) {
+    .produtos {
+        grid-template-columns: 1fr; /* 1 card por linha no celular */
+    }
+}
+
+.card {
+    background: #fff;
+    border-radius: 20px; /* Bordas mais arredondadas como no Figma */
+    overflow: hidden; /* Importante para a imagem respeitar o arredondamento */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    padding: 0; /* Tiramos o padding para a imagem encostar nas bordas laterais e no topo */
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  cursor: pointer; 
+}
+ .card:hover {
+
+  transform: translateY(-8px); /* levanta o card */
+
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* sombra mais forte */  
+
+ } 
+.card img {
+    width: 100%;
+    /* Define uma altura fixa proporcional. 450px a 500px costuma dar esse efeito "grande" */
+    height: 450px; 
+   
+    display: block;
+}
+
+/* Área de texto abaixo da imagem */
+.card-content {
+    padding: 20px;
+}
+
+.card h3 {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    color: #333;
+}
+
+.card p {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.tag {
+  background: #ff4d94;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+/* Tags sobre as imagens */
+.tag {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: var(--primary-color);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+#btnLogout {
+  cursor: pointer;
+}
+
+#btnLogout:hover {
+  color: #c084fc; /* roxinho */
+}
+
+#perfil {
+  cursor: pointer;
+}
+
+#perfil:hover {
+  color: #c084fc; /* roxinho */
+}
+
+/* Container do Modal */
+.modal-detalhes {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 3000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-container {
+    background: white;
+    width: 100%;
+    max-width: 850px;
+    border-radius: 25px;
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.modal-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+}
+
+/* Lado da Imagem */
+.modal-imagem {
+    position: relative;
+    background: #f9f9f9;
+}
+
+.modal-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.btn-favorito {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: white;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    color: #ff499e;
+    cursor: pointer;
+}
+
+/* Lado das Informações */
+.modal-info {
+    padding: 40px;
+}
+
+.tag-categoria {
+    background: #fff0f9;
+    color: #ff499e;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.modal-info h2 {
+    margin: 15px 0;
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.descricao {
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.preco {
+    color: #d136bc;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+/* Opções de Seleção */
+.selecao-grupo {
+    margin-bottom: 20px;
+}
+
+.selecao-grupo span {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.opcoes {
+    display: flex;
+    gap: 10px;
+}
+
+.opcoes button {
+    border: 1px solid #ddd;
+    background: white;
+    padding: 8px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.opcoes button:hover {
+    border-color: #ff499e;
+    color: #ff499e;
+}
+
+/* Ações de Compra */
+.compra-acoes {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.contador {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 5px 15px;
+    gap: 15px;
+}
+
+.contador button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.btn-carrinho {
+    flex: 1;
+    background: linear-gradient(90deg, #ff499e, #7e57ff);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-fechar-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: white;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .modal-layout { grid-template-columns: 1fr; }
+    .modal-container { max-height: 90vh; overflow-y: auto; }
+}
+
+.carrossel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carrossel-imagens {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+.carrossel-imagens img {
+  width: 100%;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.btn-prev,
+.btn-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.btn-prev { left: 5px; }
+.btn-next { right: 5px; }
+
+
+.opcoes button.ativo {
+  border-color: #ff499e;
+  color: #ff499e;
+  background: #fff0f9;
+  font-weight: bold;
+}
+

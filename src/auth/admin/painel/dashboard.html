@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Painel Admin</title>
+  <link rel="stylesheet" href="css/admin.css">
+   <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
+
+<script type="module" src="../logout.js"></script>
+
+  <script type="module" src="../authAdmin.js"></script>
+  <script type="module" src="../produtosAdmin.js"></script>
+</head>
+<body>
+
+    <header class="admin-header">
+  <div class="logo">
+    <span>Closet Guirra</span>
+  </div>
+
+  <button class="logout-btn" id="btnLogout">
+    <i class="fa-solid fa-right-from-bracket"></i>
+    Sair
+  </button>
+</header>
+
+
+    <main class="container">
+ 
+
+        <section class="hero-card">
+            <h1>Painel Administrativo</h1>
+            <p>Gerencie produtos e pedidos da sua loja</p>
+        </section>
+
+        <div class="tabs">
+            <button class="tab-btn active"><i class="fa-solid fa-box"></i> Produtos (6)</button>
+            <button class="tab-btn"><i class="fa-solid fa-cart-shopping"></i> Pedidos (0)</button>
+        </div>
+
+        <button class="btn-add-product">+ Adicionar Novo Produto</button>
+            <div id="modalProduto" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Novo Produto</h2>
+            <span class="close-modal">&times;</span>
+        </div>
+        
+        <form id="formProduto">
+
+  <div class="form-group">
+    <label>Nome do Produto *</label>
+    <input type="text" id="nome" required>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label>Preço (R$) *</label>
+      <input type="number" id="preco" step="0.01" required>
+    </div>
+
+    <div class="form-group">
+      <label>Categoria *</label>
+      <select id="categoria" required>
+        <option value="vestidos">Vestidos</option>
+        <option value="blusas">Blusas</option>
+        <option value="calcas">Calças</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Descrição *</label>
+    <textarea id="descricao" rows="4"></textarea>
+  </div>
+
+  <div class="form-group">
+   <label>URLs das Imagens *</label>
+
+<input type="url" class="imagem-url" placeholder="Imagem 1">
+<input type="url" class="imagem-url" placeholder="Imagem 2">
+<input type="url" class="imagem-url" placeholder="Imagem 3">
+
+  </div>
+
+  <div class="form-group">
+    <label>Tamanhos Disponíveis</label>
+    <div class="sizes">
+      <label><input type="checkbox" value="P"> P</label>
+      <label><input type="checkbox" value="M"> M</label>
+      <label><input type="checkbox" value="G"> G</label>
+      <label><input type="checkbox" value="GG"> GG</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+  <label>Cores Disponíveis</label>
+  <div class="color-row">
+    <input type="text" id="corInput" placeholder="Ex: Rosa">
+    <button type="button" id="addCor">Adicionar</button>
+  </div>
+
+  <div id="listaCores"></div>
+</div>
+
+
+  <div class="modal-footer">
+    <button type="button" class="btn-cancelar" id="btnCancelar">Cancelar</button>
+    <button type="submit" class="btn-submit">Adicionar Produto</button>
+  </div>
+</form>
+
+    </div>
+</div>
+        <div class="products-grid" id="productsGrid"></div>
+
+    </main>
+</body>
+</html>

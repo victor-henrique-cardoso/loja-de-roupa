@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Login | Closet Guirra</title>
+  <link rel="stylesheet" href="src/pages/CSS/auth.css">
+<script src="src/auth/toggleSenha.js"></script>
+<script type="module" src="src/auth/auth.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+<body>
+
+  <div class="auth-card">
+    <div class="logo">
+      
+      <h1>Closet Guirra</h1>
+      <p>Bem-vinda de volta ✨</p>
+    </div>
+
+<form id="loginForm">
+
+  <div class="input-group">
+    <i class="fa-solid fa-envelope"></i>
+    <input type="email" id="emailLogin" placeholder="Email" required>
+  </div>
+
+  <div class="input-group">
+    <i class="fa-solid fa-lock"></i>
+    <input type="password" id="senhaLogin" placeholder="Senha" required>
+    <i class="fa-solid fa-eye toggle-password"
+       onclick="toggleSenha('senhaLogin', this)"></i>
+  </div>
+
+  <button type="submit" id="btnLogin">Entrar</button>
+
+</form>
+
+<p id="msg"></p>
+
+
+<p id="msg"></p>
+
+
+    <p class="link">
+      Não tem conta? <a href="register.html">Cadastre-se</a>
+    </p>
+  </div>
+
+  
+</body>
+</html>

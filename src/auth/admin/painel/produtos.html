@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Produtos</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+  <aside class="menu">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="produtos.html">Produtos</a>
+    <a href="pedidos.html">Pedidos</a>
+  </aside>
+
+  <main class="conteudo">
+    <h1>Produtos</h1>
+
+    <form id="formProduto">
+      <input id="nome" placeholder="Nome">
+      <input id="preco" placeholder="Preço">
+      <input id="categoria" placeholder="Categoria">
+      <input id="imagem" placeholder="URL da imagem">
+      <button>Adicionar</button>
+    </form>
+
+    <div id="listaProdutos"></div>
+  </main>
+
+  <script type="module" src="../authAdmin.js"></script>
+  <script type="module" src="../produtosAdmin.js"></script>
+</body>
+</html>
